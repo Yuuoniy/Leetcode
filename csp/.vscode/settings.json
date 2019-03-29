@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "*.less": "less",
+    "xstring": "cpp"
+  }
+}
