@@ -1,3 +1,9 @@
+/*
+ * @Author: yuuoniy 
+ * @Date: 2019-03-29 22:24:55 
+ * @Last Modified by:   yuuoniy 
+ * @Last Modified time: 2019-03-29 22:24:55 
+ */
 // P1280 尼克的任务
 #include <iostream>
 #include <stdio.h>
