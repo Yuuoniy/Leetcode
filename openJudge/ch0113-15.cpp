@@ -28,7 +28,6 @@ void process(char *str){
   int len= 0;
   if(sign==0){
     tmp[0]='-';
-    // printf("negtive\n");
     ++len;
   }
 
@@ -40,7 +39,6 @@ void process(char *str){
   if(strcmp(tmp,"-")==0||strcmp(tmp,"")==0)
     strcpy(tmp,"0");
   strcpy(str,tmp);
-  // printf("%s\n",tmp);
 }
 
 int main(){
@@ -54,13 +52,11 @@ int main(){
     scanf("%s",str);
     if(strlen(str)==0) continue;
     process(str);
-    // printf("%s after process\n",str);
     int j =0;
     for(j = 0; j < currentNum; j++)
     {
      if(strcmp(strcount[j].str,str)==0){
        strcount[j].count++;
-      //  printf("%s is same\n",strcount[j].str);
        break;   
      }
     }
@@ -68,13 +64,11 @@ int main(){
       strcpy(strcount[currentNum].str,str);
       strcount[currentNum].count=1;
       currentNum++;
-      // printf("%s is added",strcount[currentNum-1].str);
     }
     
   }
   if(currentNum==1&&n>currentNum) printf("no\n");
   else{
-    //find max
     int max = 0;
     for(int i = 0; i < currentNum; i++)
     {

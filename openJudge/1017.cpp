@@ -7,7 +7,6 @@ int main(){
   int countZero = 0;
   int boxNum = 0;
   int area[2]={0};
-  // vector<pair<int,int>>area;
   while(1){
     for(int i=0;i<6;i++){
       cin >> input[i];

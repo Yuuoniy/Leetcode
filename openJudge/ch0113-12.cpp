@@ -50,7 +50,6 @@ int main(){
   for(int i = 0; i < n; i++)
   {
     scanf("%d%c%d",&firsta,&tmp,&firstb);
-    // cout << firsta << " " << firstb<< endl;
     nums.push(make_pair(firsta,firstb));
   }
   while(nums.size()>1){
