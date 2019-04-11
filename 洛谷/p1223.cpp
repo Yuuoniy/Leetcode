@@ -1,3 +1,9 @@
+/*
+ * @Author: yuuoniy 
+ * @Date: 2019-04-11 02:22:56 
+ * @Last Modified by:   yuuoniy 
+ * @Last Modified time: 2019-04-11 02:22:56 
+ */
 #include <iostream>
 #include <stdio.h>
 using namespace std;
@@ -38,7 +44,7 @@ int main(){
     count+=copynum[idx]*(n-i-1);
   }
   cout << endl;
-  printf("%.2f",(float)count/(n-1));
+  printf("%.2f",(float)count/n);
   return 0;
 
   
