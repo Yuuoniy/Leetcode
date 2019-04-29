@@ -1,4 +1,5 @@
 // 归并排序求逆序对个数
+// 爆 int 问题，注意等于的情况
 // #include<bits/stdc++.h>
 #include <stdio.h>
 
