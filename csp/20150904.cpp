@@ -2,7 +2,7 @@
  * @Author: yuuoniy 
  * @Date: 2019-05-09 14:53:01 
  * @Last Modified by: yuuoniy
- * @Last Modified time: 2019-05-09 17:04:39
+ * @Last Modified time: 2019-05-09 17:21:11
  */
 
 // 计算强连通分量
@@ -41,22 +41,16 @@ void tarjan(int x){
       low[x] = min(low[x],dfn[ver[i]]);
     }
   }
-  //  int count = 0;
-    if(dfn[x]==low[x]){
-      cnt++;
-      int y;
-      do{
-        y = stack[top--];
-        ins[y] = 0;
-        c[y] = cnt;
-        scc[cnt].push_back(y);
-        // ++count;
-      }while (x!=y);
-      // if(count>1){
-      //   // r = r+count*(count-1)/2;
-      // }
-      
-    }
+  if(dfn[x]==low[x]){ //记录新的连通块
+    cnt++;
+    int y;
+    do{
+      y = stack[top--];
+      ins[y] = 0;
+      c[y] = cnt;
+      scc[cnt].push_back(y);
+    }while (x!=y);
+  }
   
 }
 int main(){
@@ -74,14 +68,11 @@ int main(){
   }
 
   int res = 0;
-  // cout << cnt << endl;
   for (int i = 1; i <= cnt; i++)
   {
-    // cout << scc[i].size() << endl;
     if(scc[i].size()>1)
       res+=(scc[i].size()*(scc[i].size()-1))/2;
   }
   cout << res << endl;
-  // cout << r<< endl;
   return 0;
 }
