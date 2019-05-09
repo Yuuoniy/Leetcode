@@ -5,6 +5,8 @@
  * @Last Modified time: 2019-05-09 10:24:58
  */
 // 炉石传说
+// 竟然把 i 写成 1 ..
+// 重点是 vector!!
 #include <iostream>
 #include <vector>
 #include <string>
