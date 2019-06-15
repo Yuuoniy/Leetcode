@@ -29,9 +29,10 @@ int main(){
   
   int n = 0,count = 0;
   cin >>  n;
-  for(int i = 11; i <= n; i++)
+  for(int i = 11; i < n; i++)
   {
     if(isPrime(i)&&isCycle(i)){
+      cout << i << endl;
       ++count;
     }
   }

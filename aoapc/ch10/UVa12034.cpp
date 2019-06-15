@@ -19,7 +19,7 @@ void init(){
 int main(){
   init();
   f[0] = 1;
-  for(int i = 1; i < 1000; i++)
+  for(int i = 1; i <= 1000; i++)
   {
     f[i] = 0;
     for(int j = 1; j <=i; j++)

@@ -2,6 +2,8 @@
   "files.associations": {
     "*.less": "less",
     "xstring": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "vector": "cpp",
+    "utility": "cpp"
   }
 }

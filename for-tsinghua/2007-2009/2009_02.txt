@@ -1,0 +1,80 @@
+#include <fstream>
+#include <iostream>
+#define MAX_N 1000
+#define MAX_M 5000
+#define LEN 20
+#define SYM '.'
+using namespace std;
+
+void convert(char *p,char *result){
+
+	int i=0,j=0;
+	char tempIP[LEN];
+	char *temp = tempIP;
+	strcpy(temp,p);
+	int len = strlen(temp);
+	for(i=0;i<len;i++){
+		if(*(temp+i)==SYM)
+			*(temp+i) = '\0';
+	}
+	for(i=0;i<4;i++){
+	
+		len = strlen(temp);
+		for(j=0;j<3-len;j++)
+			*(result++) = '0';
+		strcpy(result,temp);
+		result += strlen(temp);
+		temp = temp + strlen(temp) + 1;
+	}
+	*(result) = '\0';
+}
+
+int main(){
+
+	char IPproxy[MAX_N][LEN],IPser[MAX_M][LEN];
+	char IP[LEN];
+	int proxyCount,serCount;
+	int changeCount = 0;
+
+	int i,j;
+	ifstream in("1.txt");
+		if(!in){
+			cout << "Cannot open the file" <<endl;
+			return 1;
+		}
+	in >> proxyCount;
+	for(i=0;i<proxyCount;i++){
+		in >> IP;
+		convert(IP,IPproxy[i]);
+	}
+
+	in >> serCount;
+	for(i=0;i<serCount;i++){
+	
+		in >> IP;
+		convert(IP,IPser[i]);
+	}
+	in.close();
+// input finished 
+
+	int finishCount = 0;
+	for(i=0;i<serCount;i++){
+	
+		for(j=0;j<proxyCount;j++){
+		
+			if(strcmp(IPproxy[j],IPser[i])==0){
+			
+				finishCount ++;
+			}
+		}
+		if(finishCount ==proxyCount){
+		
+			finishCount = 1;
+			changeCount ++;
+		}
+
+	}
+
+	cout << changeCount<<endl;
+	return 0;
+}

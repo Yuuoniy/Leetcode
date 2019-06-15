@@ -4,7 +4,7 @@
 using namespace std;
 int T;
 int n,S;
-int nums[10005];
+int nums[100005];
 
 
 void solve(){

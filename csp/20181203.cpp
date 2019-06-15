@@ -48,7 +48,6 @@ void format(char str[20],list<IP> &ip_list){
   //sscanf 返回了成功读到几个数
   int cnt = sscanf(ip_str,"%u.%u.%u.%u",&dec[0],&dec[1],&dec[2],&dec[3]);
   if(tmp.prefix==-1) tmp.prefix = cnt*8;
-  // cout << tmp.prefix << endl;
   tmp.ip = (dec[0]<<24)^(dec[1]<<16)^(dec[2]<<8)^dec[3];
   ip_list.push_back(tmp);
 }
