@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.less": "less",
+    "iostream": "cpp",
+    "xstring": "cpp",
+    "cmath": "cpp"
+  }
+}
