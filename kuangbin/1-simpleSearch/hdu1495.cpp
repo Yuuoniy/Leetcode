@@ -2,7 +2,7 @@
  * @Author: yuuoniy
  * @Date: 2019-05-18 10:17:27
  * @Last Modified by: yuuoniy
- * @Last Modified time: 2019-05-18 17:58:57
+ * @Last Modified time: 2019-07-10 23:17:40
  */
 // 关键是题意的转化，理解每一个状态，状态间的转移，隐式图遍历
 // 状态用二维数组表示
@@ -75,7 +75,7 @@ void bfs() {
         cur = t;
         pour(i, j);
         if (visited[tmp.v[0]][tmp.v[1]] == 0) {
-          visited[tmp.v[0]][tmp.v[1]] = 1;
+          visited[tmp.v[0]][tmp.v[1]] = 1; //标记该状态
           tmp.step = tmp.step + 1;
           q.push(tmp);
         }
