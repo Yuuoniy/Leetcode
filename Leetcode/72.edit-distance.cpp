@@ -45,12 +45,35 @@
  * enention -> exention (replace 'n' with 'x')
  * exention -> exection (replace 'n' with 'c')
  * exection -> execution (insert 'u')
- * 
+ * 注意边界条件！特殊情况！
  * 
  */
 class Solution {
 public:
     int minDistance(string word1, string word2) {
+        int dp[word1.size()+1][word2.size()+1];
+        //注意边界条件的初始化！
+        for (int i = 0; i <= word1.size(); i++)
+        {
+            dp[i][0] = i;
+        }
+          for (int j = 0; j <= word2.size(); j++)
+        {
+            dp[0][j] = j;
+        }
+        for (int i = 1; i <=word1.size(); i++)
+        {
+            for (int j = 1; j <=word2.size(); j++)
+            {
+                if(word1[i-1]==word2[j-1]){
+                    dp[i][j] = dp[i-1][j-1];
+                }else{
+                    dp[i][j] = min(min(dp[i][j-1]+1,dp[i-1][j-1]+1),dp[i-1][j]+1);
+                }
+            }
+            
+        }
+        return dp[word1.size()][word2.size()];
         
     }
 };

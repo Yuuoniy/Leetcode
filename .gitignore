@@ -2,4 +2,5 @@
 *.exe
 # *.md
 */.vscode/
-/for
+/for-tsinghua
+/for-fd
