@@ -29,7 +29,7 @@
  * return the length.
  * Your algorithm should run in O(n^2) complexity.
  *
- *
+ * 做题一定要注意特殊情况啊啊啊啊！！比如 [0] 一定要自己测试一下！
  * Follow up: Could you improve it to O(n log n) time complexity?
  *
  */
