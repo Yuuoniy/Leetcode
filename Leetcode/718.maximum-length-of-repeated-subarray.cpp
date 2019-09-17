@@ -22,10 +22,10 @@ public:
         int res = 0;
         for (int i = 1; i <= A.size(); i++)
         {
-            for (size_t j = 1; j <= B.size(); j++)
+            for (size_t j = B.size(); j>=1; j--)
             {
                if(A[i-1]==B[j-1]){
-                   dp[j] = dp[j]+1;
+                   dp[j] = dp[j-1]+1;
                    res = max(res,dp[j]);
                }else{
                    dp[j]= 0;

@@ -34,7 +34,7 @@
  * Note:
  * 
  * All given inputs are in lowercase letters a-z.
- * 
+ * 注意特殊情况，比如只有一个数据！
  */
 class Solution {
 public:

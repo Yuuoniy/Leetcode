@@ -2,7 +2,7 @@
  * @Author: yuuoniy 
  * @Date: 2019-05-10 09:14:42 
  * @Last Modified by: yuuoniy
- * @Last Modified time: 2019-05-10 16:20:02
+ * @Last Modified time: 2019-08-23 12:54:06
  */
 // 最优配餐
 // 每个顾客广度优先搜索，找到最近的店铺就好了吧。。 不要单独，要一起搜索！
@@ -13,47 +13,81 @@
 #include <utility>
 #include <vector>
 #include <set>
+#include <queue>
 
 using namespace std;
 typedef pair<int,int> P;
 const int MAX_N = 1005;
 const int MAX_M =  MAX_N*MAX_N;
 
-int n,m,k,d;
-int ma[MAX_N][MAX_N];
-vector<P> store;
-set<P> customer;
-int  ans;
+int dist[MAX_N][MAX_N];
+bool visited[MAX_N][MAX_N];
 
+int width,numStore,numClient,numHole;
 
-int bfs(){
+struct Pos{
+  int x,y,val;
+  Pos(int _x,int _y):x(_x),y(_y){}
+  Pos(){}
+};
 
+bool legal(int x,int y){
+  return x>=1&&y>=1&&x<=width&&y<=width;
 }
+
+Pos dir[4]={{0,1},{0,-1},{1,0},{-1,0}};
+
 int main(){
-  cin >> n >> m >> k >> d;
-  //m 个 分店
-  for (int i = 0; i < m; i++)
+  cin >> width >> numStore >> numClient >> numHole;
+  queue<Pos> stores;
+  vector<Pos> holes,clients;
+  Pos p;
+  // 商店
+  for (int i = 0; i < numStore; i++)
   {
-    int x,y;
-    cin >> x >> y;
-    ma[y][x] = -1;
-    store.push_back(make_pair(x,y));
+    cin >> p.x >> p.y;
+    stores.push(p);
+    dist[p.x][p.y] = 0;
+    visited[p.x][p.y] = true;
   }
-  // 客户的位置 订餐量
-  for (int i = 0; i < k; i++)
+  // 客户
+  for (int i = 0; i < numClient; i++)
   {
-    int x,y,c;
-    cin >> x >> y >> c;
-    ma[y][x] +=c;
-    customer.insert(make_pair(x,y));
+    cin >> p.x >> p.y >> p.val;
+    clients.push_back(p);
   }
-  //不能经过的地方
-  for (int i = 0; i < d; i++)
+  for (int i = 0; i < numHole; i++)
   {
-    int x,y;
-    cin >> x >> y; 
-    ma[y][x] =-2;
+    cin >> p.x >> p.y;
+    dist[p.x][p.y] = -1;
+    visited[p.x][p.y] = true;
   }
-  solve();
+  while (!stores.empty())
+  {
+    Pos p = stores.front();
+    stores.pop();
+    for (int i = 0; i < 4; i++)
+    {
+      Pos np(p.x+dir[i].x,p.y+dir[i].y);
+      if(!visited[np.x][np.y]&&legal(np.x,np.y)){
+        visited[np.x][np.y] = true;
+        dist[np.x][np.y] = dist[p.x][p.y]+1;
+        stores.push(np);
+      }
+    }
+    
+  }
+  long long cost = 0;
+  for (int i = 0; i < numClient; i++)
+  {
+    cost+= dist[clients[i].x][clients[i].y]*clients[i].val;
+  }
+  cout << cost;
+  
+  
   return 0;
+  
+
+
+  
 }
